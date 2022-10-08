@@ -1,18 +1,26 @@
 import './App.css';
 import Header from './components/Header/Header';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import Input from './components/Input/Input';
 import Items from './components/Itemlist/Items';
 import { useEffect, useState } from 'react';
 import { setLocalStorage, loadLocalStorage } from './components/Storage/localStorage'
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 
 function App() {
   const { search } = require("fast-fuzzy");
-
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(loadLocalStorage("itemList") ?? []);
   const [filter, setFilter] = useState([]);
   const [InputFieldData, setInputFieldData] = useState("");
 
+  const [Cart, setCart] = useState([])
+
+
+  const toShoppingCart = (itemName) => {
+    setCart([...Cart, itemName])
+    setFilter(filter.filter((event) => event !== itemName));
+    console.log(itemName);
+  }
 
   useEffect(() => {
     const url = "https://fetch-me.vercel.app/api/shopping/items";
@@ -27,7 +35,8 @@ function App() {
 
   useEffect(() => {
     setLocalStorage("itemList", data);
-  }, [data])
+    setLocalStorage("cartlist", Cart);
+  }, [Cart])
 
   const filterList = () => {
     const results = search(InputFieldData, data, {
@@ -41,9 +50,10 @@ function App() {
     <div className="App">
       <MainContent>
         <Header />
-
+        <ShoppingCart Cart={Cart}/>
         <Input data={data} InputFieldData={InputFieldData} setInputFieldData={setInputFieldData} filterList={filterList} />
-        <Items filter={filter}/>
+        <Items filter={filter} toShoppingCart={toShoppingCart} />
+
       </MainContent>
     </div>
   );
