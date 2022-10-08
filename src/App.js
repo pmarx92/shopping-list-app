@@ -13,7 +13,7 @@ function App() {
   const [filter, setFilter] = useState([]);
   const [InputFieldData, setInputFieldData] = useState("");
 
-  const [Cart, setCart] = useState([])
+  const [Cart, setCart] = useState(loadLocalStorage("cartlist") ?? [])
 
 
   const toShoppingCart = (itemName) => {
@@ -50,7 +50,7 @@ function App() {
     <div className="App">
       <MainContent>
         <Header />
-        <ShoppingCart Cart={Cart}/>
+        <ShoppingCart Cart={Cart} />
         <Input data={data} InputFieldData={InputFieldData} setInputFieldData={setInputFieldData} filterList={filterList} />
         <Items filter={filter} toShoppingCart={toShoppingCart} />
 
