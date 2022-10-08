@@ -1,9 +1,17 @@
 import styled from 'styled-components'
 
-function Input() {
+
+function Input({setInputFieldData, filterList }) {
+
+    const inputValue = (e) => {
+        setInputFieldData(e.target.value)
+        filterList();
+    }
+
     return (
+
         <Wrapper>
-            <StyledInput name="text" type="text" placeholder='Search for Items...' />
+            <StyledInput name="text" type="text" placeholder='Search for Items...' onChange={inputValue} />
         </Wrapper>
     )
 }
