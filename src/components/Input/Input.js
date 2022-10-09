@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 
-function Input({setInputFieldData, filterList }) {
+function Input({ setInputFieldData, filterList }) {
 
     const inputValue = (e) => {
         setInputFieldData(e.target.value)

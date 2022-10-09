@@ -4,10 +4,9 @@ function ShoppingCart({ Cart, removeFromShoppingCart }) {
     return (
         <StyledShoppingCart>
             <Headline>Einkaufsliste</Headline>
-            
             {
                 Cart.map((active) => { return <StyledBtn key={active._id} onClick={() => removeFromShoppingCart(active)}>{active.name.de}</StyledBtn> })
-            } 
+            }
         </StyledShoppingCart>
     )
 }

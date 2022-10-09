@@ -4,11 +4,11 @@ import styled from 'styled-components';
 function Items({ filter, toShoppingCart }) {
 
     return (
-            <Wrapper>
-                {
-                    filter.map((itemName) => { return <StyledBtn key={itemName._id} onClick={() => toShoppingCart(itemName)}>{itemName.name.de}</StyledBtn> })
-                }
-            </Wrapper >
+        <Wrapper>
+            {
+                filter.map((itemName) => { return <StyledBtn key={itemName._id} onClick={() => toShoppingCart(itemName)}>{itemName.name.de}</StyledBtn> })
+            }
+        </Wrapper >
     )
 }
 
