@@ -15,22 +15,16 @@ function App() {
 
   const [Cart, setCart] = useState(loadLocalStorage("cartlist") ?? []);
 
-
   const toShoppingCart = (itemName) => {
-    const nameOfItem = itemName.name.de;
-
     setCart([...Cart, itemName])
     setFilter(filter.filter((event) => event !== itemName));
     setData(data.filter((event) => event !== itemName));
-    console.log("to: " + nameOfItem)
   }
 
   const removeFromShoppingCart = (active) => {
-
     setCart(Cart.filter((event) => event !== active));
     setFilter([active, ...filter]);
     setData([active, ...data]);
-    console.log("removed: " + active)
   }
 
   useEffect(() => {
@@ -39,8 +33,7 @@ function App() {
     async function fetchData() {
       const response = await fetch(url);
       const result = await response.json();
-      const resultData = result.data;
-      setData(resultData);
+      setData(result.data);
     }
   }, [])
 
@@ -58,7 +51,7 @@ function App() {
   }
 
 
-  
+
   return (
     <div className="App">
       <MainContent>
