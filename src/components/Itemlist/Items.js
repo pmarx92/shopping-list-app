@@ -6,7 +6,7 @@ function Items({ filter, toShoppingCart }) {
     return (
             <Wrapper>
                 {
-                    filter.map((itemName) => { return <StyledBtn key={itemName._id} onClick={() => toShoppingCart(itemName.name.de)}>{itemName.name.de}</StyledBtn> })
+                    filter.map((itemName) => { return <StyledBtn key={itemName._id} onClick={() => toShoppingCart(itemName)}>{itemName.name.de}</StyledBtn> })
                 }
             </Wrapper >
     )
@@ -30,4 +30,5 @@ box-shadow: 0 0 10px black;
     transition: all .3s;
 }
 `
+
 export default Items
