@@ -18,12 +18,12 @@ function App() {
 
   const toShoppingCart = (itemName) => {
     setCart([...Cart, itemName])
-    setFilter(filter.filter((event) => event !== itemName));
-    setData(data.filter((event) => event !== itemName));
+    setFilter(filter.filter((item) => item !== itemName));
+    setData(data.filter((item) => item !== itemName));
   }
 
   const removeFromShoppingCart = (active) => {
-    setCart(Cart.filter((event) => event !== active));
+    setCart(Cart.filter((item) => item !== active));
     setFilter([active, ...filter]);
     setData([active, ...data]);
   }
